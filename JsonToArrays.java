@@ -1,4 +1,17 @@
+package com.web.clients.util;
+
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringEscapeUtils;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+
 /**
+*
 * json串格式化工具：http://tool.oschina.net/codeformat/json
 */
 publci class JsonToArrays {
