@@ -10,7 +10,7 @@ public class HttpClientDemo {
 		// String fielPath = "";
 		// ArrayList<String> fileList = FileForEach.getFileList(fielPath);
 		// System.out.println(fileList);
-		// System.out.println("ÎÄ¼şÊı£º" + fileList.size());
+		// System.out.println("æ–‡ä»¶æ•°ï¼š" + fileList.size());
 		//
 		// for (String pathStr : fileList) {
 		// JSONArray jsonArray = JsonToArray.jsonToArrays(pathStr);
@@ -29,31 +29,31 @@ public class HttpClientDemo {
 		// System.out.println("sql --> " + pb.getSql());
 		// }
 
-		// ±äÁ¿¸³Öµ
-		// String setVarString = "asdf&{var1:response.data}Sdc";
+		// å˜é‡èµ‹å€¼
+		// String setVarString = "asdf&{var1:response.data}Sdqqcasdf&{var2:response.data.list}Sdc";
 		// Pattern pPattern = Pattern.compile("\\&\\{\\w.*\\}");
 		// Matcher pMatcher = pPattern.matcher(setVarString);
 		// while (pMatcher.find()) {
 		// String childString = pMatcher.group();
-		// System.out.println("Æ¥Åäµ½µÄ¸¸´®£º" + childString);
-		// Pattern cPattern = Pattern.compile("\\w+:\\w+\\.?\\w+");
+		// System.out.println("åŒ¹é…åˆ°çš„çˆ¶ä¸²ï¼š" + childString);
+		// Pattern cPattern = Pattern.compile("\\w+:[\\w+\\.?]*\\w+");
 		// Matcher cMatcher = cPattern.matcher(childString);
 		// while (cMatcher.find()) {
-		// System.out.println("Æ¥Åäµ½µÄ×Ó´®£º" + cMatcher.group());
+		// System.out.println("åŒ¹é…åˆ°çš„å­ä¸²ï¼š" + cMatcher.group());
 		// }
 		// }
 
-		// È¡³ö±äÁ¿
-		String getVarString = "adf${var2}asdf";
-		Pattern pPattern = Pattern.compile("\\$\\{\\w.*\\}");
+		// å–å‡ºå˜é‡
+		String getVarString = "adf${var1}asdfadf${var2}asdf";
+		Pattern pPattern = Pattern.compile("\\$\\{\\w*\\}");
 		Matcher pMatcher = pPattern.matcher(getVarString);
 		while (pMatcher.find()) {
 			String childString = pMatcher.group();
-			System.out.println("Æ¥Åäµ½µÄ¸¸´®£º" + childString);
+			System.out.println("åŒ¹é…åˆ°çš„çˆ¶ä¸²ï¼š" + childString);
 			Pattern cPattern = Pattern.compile("\\w+");
 			Matcher cMatcher = cPattern.matcher(childString);
 			while (cMatcher.find()) {
-				System.out.println("Æ¥Åäµ½µÄ×Ó´®£º" + cMatcher.group());
+				System.out.println("åŒ¹é…åˆ°çš„å­ä¸²ï¼š" + cMatcher.group());
 			}
 		}
 
