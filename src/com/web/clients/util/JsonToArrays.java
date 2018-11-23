@@ -11,7 +11,7 @@ import net.sf.json.JSONObject;
 
 /**
  *
- * json串格式化工具：http://tool.oschina.net/codeformat/json
+ * json鏁版嵁鏍煎紡鍖栧伐鍏凤細http://tool.oschina.net/codeformat/json
  */
 public class JsonToArrays {
 
