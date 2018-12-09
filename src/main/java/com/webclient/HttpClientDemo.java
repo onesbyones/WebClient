@@ -43,7 +43,7 @@ public class HttpClientDemo {
 		// }
 
 		// 变量赋值ֵ
-		String setVarString = "asdf&{var1:response.data}Sdcasdf&{var2:response.data.list}Sdc";
+		String setVarString = "asdf&{var1:response.data}Sdcasdf&{var2:response.data.list}Sdc&{var3:response.data.list.0}Sdcsdf";
 		Matcher setVarParentMatcher = SET_VAR_PARENT_PATTERN.matcher(setVarString);
 		while (setVarParentMatcher.find()) {
 			String childString = setVarParentMatcher.group();

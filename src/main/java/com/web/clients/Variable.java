@@ -19,13 +19,10 @@ import net.sf.json.JSONObject;
 
 public class Variable {
 
-	private static HashMap<String, String> varMap;
 	private static Pattern SET_VAR_PARENT_PATTERN = Pattern.compile("\\&\\{\\w.*\\}");
 	private static Pattern SET_VAR_CHILDREN_PATTERN = Pattern.compile("\\w+:[\\w+\\.?]*\\w+");
-
-	static {
-		varMap = new HashMap<>(256);
-	}
+	private static Pattern GET_VAR_PARENT_PATTERN = Pattern.compile("\\$\\{\\w*\\}");
+	private static Pattern GET_VAR_CHILDREN_PATTERN = Pattern.compile("\\w+");
 
 	/**
 	 * 处理变量关系
@@ -35,10 +32,8 @@ public class Variable {
 	 * @see 暂时不支持多变量赋值，比如：asdf&{var1:response.data}Sdcasdf&{var2:response.data.
 	 *      list}Sdc&{var3:response.data.list.0}Sdcsdf
 	 */
-	public static HashMap<String, String> setVariableMap(ParamBean paramBean) {
-		// 变成jsonObject
+	public static void setVariable(ParamBean paramBean, HashMap<String, String> variableMap) {
 		JSONObject responseJson = JSONObject.fromObject(paramBean.getResponse());
-		// 给变量赋值
 		Matcher setVarParentMatcher = SET_VAR_PARENT_PATTERN.matcher(paramBean.getVariable());
 		while (setVarParentMatcher.find()) {
 			String childString = setVarParentMatcher.group();
@@ -56,7 +51,7 @@ public class Variable {
 						if (!responseJson.getString(varList.get(i)).contains("{")
 								&& !responseJson.getString(varList.get(i)).contains("[")) {
 							// 如果是个String则直接赋值给变量
-							varMap.put(varStr[0], responseJson.getString(varList.get(i)));
+							variableMap.put(varStr[0], responseJson.getString(varList.get(i)));
 						} else if (responseJson.getString(varList.get(i)).contains("[")
 								|| responseJson.getString(varList.get(i)).contains("]")) {
 							// 如果是JSONArray
@@ -71,19 +66,48 @@ public class Variable {
 				}
 			}
 		}
+	}
 
-		return varMap;
+	/**
+	 * 获取变量并返回变量替换后的URI
+	 * 
+	 * @param paramBean
+	 */
+	public static String getVariable(ParamBean paramBean, HashMap<String, String> variableMap) {
+		String uri = new String(paramBean.getUri());
+		Matcher getVarParentMatcher = GET_VAR_PARENT_PATTERN.matcher(uri);
+		while (getVarParentMatcher.find()) {
+			String parentString = getVarParentMatcher.group();
+			System.out.println("匹配到的父串：" + parentString);
+			Matcher getVarChildrenMatcher = GET_VAR_CHILDREN_PATTERN.matcher(parentString);
+			while (getVarChildrenMatcher.find()) {
+				String childrenString = getVarChildrenMatcher.group();
+				System.out.println("匹配到的子串：" + childrenString);
+				String tempStr = variableMap.get(childrenString);
+				if (null == tempStr) {
+					throw new NullPointerException("不存在的变量{" + childrenString + "}，请检查配置");
+				}
+				uri = uri.replace(parentString, tempStr);
+			}
+		}
+		return uri;
 	}
 
 	public static void main(String[] args) {
+		HashMap<String, String> varMap = new HashMap<>(256);
 		String jsonStr = "{\"success\":\"true\",\"test\":{\"sex\":\"female\",\"age\":\"11\"},\"data\":[{\"contury\":\"CN\",\"city\":\"SZ\"},{\"contury\":\"US\",\"city\":\"OKC\"}]}";
 		// success/test.sex/data.0.contury
 		String variableStr = "df&{var2:data.1.contury}";
+		String uri = "adf${var1}asdfadf${var2}asdf";
 		ParamBean paramBean = new ParamBean();
 		paramBean.setResponse(jsonStr);
 		paramBean.setVariable(variableStr);
+		paramBean.setUri(uri);
+		setVariable(paramBean, varMap);
 
-		System.out.println(setVariableMap(paramBean));
+		varMap.put("var1", "CN");
+
+		System.out.println(getVariable(paramBean, varMap));
 
 		// JSONObject json = JSONObject.fromObject(jsonStr);
 		// JSONArray jsonArray = (JSONArray) json.get("data");

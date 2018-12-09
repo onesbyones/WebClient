@@ -21,9 +21,15 @@ public class HttpClientAdapter implements InterfaceHttpExecute {
 	private final String PUT = "put";
 	private final String DELETE = "delete";
 
+	/**
+	 * 
+	 * @param paramBean
+	 */
 	public HttpClientAdapter(ParamBean paramBean) {
 
 		if (POST.equalsIgnoreCase(paramBean.getMethod())) {
+			// @todo 需要对请求URI做变量替换
+
 			this.createHttp = new CreateHttpPost(paramBean.getHost(), paramBean.getUri(), paramBean.getHeadersMap(),
 					paramBean.getBody());
 
