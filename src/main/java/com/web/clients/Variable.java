@@ -94,7 +94,7 @@ public class Variable {
 	}
 
 	public static void main(String[] args) {
-		HashMap<String, String> varMap = new HashMap<>(256);
+		HashMap<String, String> varMap = SingleVariableMap.getVariableMap();
 		String jsonStr = "{\"success\":\"true\",\"test\":{\"sex\":\"female\",\"age\":\"11\"},\"data\":[{\"contury\":\"CN\",\"city\":\"SZ\"},{\"contury\":\"US\",\"city\":\"OKC\"}]}";
 		// success/test.sex/data.0.contury
 		String variableStr = "df&{var2:data.1.contury}";
