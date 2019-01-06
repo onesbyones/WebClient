@@ -38,6 +38,5 @@ public class ResponseDone {
 		// todo:变量提取，需要放到全局变量，变量不允许重复
 
 		return responseStr;
-
 	}
 }

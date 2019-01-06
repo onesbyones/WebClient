@@ -3,7 +3,11 @@ package com.web.clients;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.impl.client.CloseableHttpClient;
 
+import com.log.LogUtils;
+import com.web.clientdelete.CreateHttpDelete;
+import com.web.clientget.CreateHttpGet;
 import com.web.clientpost.CreateHttpPost;
+import com.web.clientput.CreateHttpPut;
 
 /**
  * 
@@ -35,10 +39,15 @@ public class HttpClientAdapter implements InterfaceHttpExecute {
 
 		} else if (GET.equalsIgnoreCase(paramBean.getMethod())) {
 
+			this.createHttp = new CreateHttpGet(paramBean.getHost(), paramBean.getUri(), paramBean.getHeadersMap());
+
 		} else if (PUT.equalsIgnoreCase(paramBean.getMethod())) {
+
+			this.createHttp = new CreateHttpPut(paramBean.getHost(), paramBean.getUri(), paramBean.getHeadersMap());
 
 		} else if (DELETE.equalsIgnoreCase(paramBean.getMethod())) {
 
+			this.createHttp = new CreateHttpDelete(paramBean.getHost(), paramBean.getUri(), paramBean.getHeadersMap());
 		}
 	}
 
@@ -46,13 +55,20 @@ public class HttpClientAdapter implements InterfaceHttpExecute {
 	public CloseableHttpResponse executeHttp(ParamBean paramBean) {
 		CloseableHttpClient httpClient = CreateSingleHttpClient.getInstance();
 		CloseableHttpResponse response = null;
-		if (POST.equalsIgnoreCase(paramBean.getMethod())) {
-			try {
+
+		try {
+			if (this.POST.equalsIgnoreCase(paramBean.getMethod())) {
 				response = httpClient.execute(this.createHttp.httpPost());
-			} catch (Exception e) {
-				// TODO: handle exception
-				System.out.println(e.getMessage());
+			} else if (this.GET.equalsIgnoreCase(paramBean.getMethod())) {
+				response = httpClient.execute(this.createHttp.httpPost());
+			} else if (this.PUT.equalsIgnoreCase(paramBean.getMethod())) {
+				response = httpClient.execute(this.createHttp.httpPost());
+			} else if (this.DELETE.equalsIgnoreCase(paramBean.getMethod())) {
+				response = httpClient.execute(this.createHttp.httpPost());
 			}
+
+		} catch (Exception e) {
+			LogUtils.log("请求异常：" + e.getMessage());
 		}
 
 		return response;

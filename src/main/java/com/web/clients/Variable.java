@@ -98,7 +98,7 @@ public class Variable {
 		String jsonStr = "{\"success\":\"true\",\"test\":{\"sex\":\"female\",\"age\":\"11\"},\"data\":[{\"contury\":\"CN\",\"city\":\"SZ\"},{\"contury\":\"US\",\"city\":\"OKC\"}]}";
 		// success/test.sex/data.0.contury
 		String variableStr = "df&{var2:data.1.contury}";
-		String uri = "adf${var1}asdfadf${var2}asdf";
+		String uri = "adf${var1}asdfadf${var2}asdf${var3}";
 		ParamBean paramBean = new ParamBean();
 		paramBean.setResponse(jsonStr);
 		paramBean.setVariable(variableStr);
@@ -106,7 +106,7 @@ public class Variable {
 		setVariable(paramBean, varMap);
 
 		varMap.put("var1", "CN");
-
+		varMap.put("var3", "UK");
 		System.out.println(getVariable(paramBean, varMap));
 
 		// JSONObject json = JSONObject.fromObject(jsonStr);
