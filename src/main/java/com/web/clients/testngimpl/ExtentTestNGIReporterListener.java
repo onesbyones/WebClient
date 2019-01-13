@@ -97,7 +97,9 @@ public class ExtentTestNGIReporterListener implements IReporter {
 					String contextName = r.getTestContext().getName();
 
 					// 设置左侧栏节点名称--》父节点
-					resultNode.getModel().setName(suiteName + " : " + contextName);
+					// resultNode.getModel().setName(suiteName + " : " +
+					// contextName);
+					resultNode.getModel().setName(contextName);
 					if (resultNode.getModel().hasCategory()) {
 						resultNode.assignCategory(contextName);
 					} else {
@@ -149,8 +151,8 @@ public class ExtentTestNGIReporterListener implements IReporter {
 		}
 		ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(OUTPUT_FOLDER + FILE_NAME);
 		htmlReporter.config().setEncoding("GBK");
-		htmlReporter.config().setDocumentTitle("API Reporter");
-		htmlReporter.config().setReportName("API Reporter -" + System.currentTimeMillis());
+		htmlReporter.config().setDocumentTitle("接口测试报告");
+		htmlReporter.config().setReportName("测试报告 -" + System.currentTimeMillis());
 		htmlReporter.config().setChartVisibilityOnOpen(true);
 		htmlReporter.config().setTestViewChartLocation(ChartLocation.TOP);
 		htmlReporter.config().setTheme(Theme.STANDARD);
@@ -219,10 +221,16 @@ public class ExtentTestNGIReporterListener implements IReporter {
 						test = this.parentTestMap.get(className).createNode(name);
 					}
 				} else {
-					// 在父节点下创建子节点
-					test = extenttest.createNode(className);
-					// test.assignCategory(className);
-					test = test.createNode(name);
+					if (!this.parentTestMap.containsKey(className)) {
+						// 在父节点下创建子节点
+						test = extenttest.createNode(className);
+						// test.assignCategory(className);
+						this.parentTestMap.put(className, test);
+						test = test.createNode(name);
+					} else {
+						// 创建子节点
+						test = this.parentTestMap.get(className).createNode(name);
+					}
 
 				}
 				for (String group : result.getMethod().getGroups())

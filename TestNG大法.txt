@@ -1,0 +1,116 @@
+[RemoteTestNG] detected TestNG version 6.13.1
+[TestNGContentHandler] [WARN] It is strongly recommended to add "<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >" at the top of your file, otherwise TestNG may fail or not work as expected.
+接口名称：C端登录
+请求Url：http://gdjy-zulin.st8.anhouse.com.cn/web/api/account/login?_t=1547363537673
+请求方法：post
+请求头，Accept：application/json, text/plain, */*
+请求头，Connection：keep-alive
+请求头，Accept-Language：zh-CN,zh;q=0.9
+请求头，Accept-Encoding：gzip, deflate
+请求头，Content-Type：application/json;charset=UTF-8
+请求body：{"loginNo":"18680000222","password":"abc123","couplingFace":true,"platform":1}
+响应body：{"errorCode":"0","success":true,"fieldErrors":null,"msg":null,"data":{"accountId":428,"userCode":"18680000222","roleId":null,"roleName":null,"accountInfo":{"id":428,"mobile":"186****0222","name":"*三","identity":"5****************9","isRoot":1,"faceVerificationStatus":2,"faceFailReason":null,"faceTimes":null,"faceVerificationScore":null,"faceVerificationMediaKey":null,"faceVerificationMediaExt":null,"nameFailReason":null,"nameVerificationStatus":2,"nameVerificationDate":1544776085000,"requestId":null,"area":null,"place":null,"zipCode":null,"remark":null,"brief":null,"appealStatus":0},"appCustomerId":null,"sourceType":3,"companyBaseDTO":{"id":null,"accountTypeName":null,"manageMode":null,"companyAbbreviation":null,"companyName":null,"legalPerson":null,"companyAddress":null,"licenseNum":null,"accountId":null,"certificateStatus":null,"companyType":null,"contactNumber":null,"accountStatus":null},"functionList":[{"id":null,"chName":"组织管理/企业/机构管理","enName":"ENT_ORG_MANAGE","level":null,"parentId":null,"requestUrl":"**/web/company*/**","requestMethod":null},{"id":null,"chName":"组织管理/经纪人管理","enName":"ENT_ORG_EMPLOYEE_MANAGE","level":null,"parentId":null,"requestUrl":"**/web/account/info/**","requestMethod":null}],"faceVerificationStatus":2,"appealStatus":0}}
+响应头, Server: nginx
+响应头, Date: Sun, 13 Jan 2019 07:12:14 GMT
+响应头, Content-Type: application/json;charset=UTF-8
+响应头, Transfer-Encoding: chunked
+响应头, Connection: keep-alive
+响应头, X-ServerInfo: gdjy-zulin-web-java-679df67dd4-zvzns(10.244.17.94)
+响应头, Cache-Control: no-cache
+响应头, Pragma: no-cache
+响应头, X-Application-Context: pahf-zulin-web-java:docker-compose:9234
+响应头, Set-Cookie: ZF_COOKIE=ff147439-fb60-4e0c-b2c0-c7c2d21bf5ec; Domain=.gdjy-zulin.st8.anhouse.com.cn; Expires=Mon, 14-Jan-2019 07:12:14 GMT; Path=/; HttpOnly
+响应头, Set-Cookie: SESSION=ff147439-fb60-4e0c-b2c0-c7c2d21bf5ec; Path=/; HttpOnly
+响应头, X-Trace-Id: 08035345348028090907342858011315
+响应头, Access-Control-Allow-Origin: *
+响应头, X-Request-ID: 0803534535631343
+响应头, Set-Cookie: X-Request-ID=0803534535631343;path=/
+响应状态码： 200
+******************发布房源******************
+接口名称：上传图片
+请求Url：http://gdjy-zulin.st8.anhouse.com.cn/web/api/file/upload/picture
+请求方法：post
+请求头，cookie：ZF_COOKIE=ff147439-fb60-4e0c-b2c0-c7c2d21bf5ec; Domain=.gdjy-zulin.st8.anhouse.com.cn; Expires=Mon, 14-Jan-2019 07:12:14 GMT; Path=/; HttpOnly
+请求body：G:/DCIM/Camera/IMG_20160211_164456.jpg
+响应body：{"msg":"请求成功！","fieldErrors":[],"data":[{"fileName":"IMG_20160211_164456.jpg","fileSize":1279433,"key":"ec450d8e-f01e-499a-a355-5ba540cf42bd","piture":false}],"success":true,"errorCode":"0"}
+响应状态码： 200
+接口名称：C端登录
+请求Url：http://gdjy-zulin.st8.anhouse.com.cn/web/api/account/login?_t=1547363541701
+请求方法：post
+请求头，Accept：application/json, text/plain, */*
+请求头，Connection：keep-alive
+请求头，Accept-Language：zh-CN,zh;q=0.9
+请求头，Accept-Encoding：gzip, deflate
+请求头，Content-Type：application/json;charset=UTF-8
+请求body：{"loginNo":"18680000222","password":"abc123","couplingFace":true,"platform":1}
+响应body：{"errorCode":"0","success":true,"fieldErrors":null,"msg":null,"data":{"accountId":428,"userCode":"18680000222","roleId":null,"roleName":null,"accountInfo":{"id":428,"mobile":"186****0222","name":"*三","identity":"5****************9","isRoot":1,"faceVerificationStatus":2,"faceFailReason":null,"faceTimes":null,"faceVerificationScore":null,"faceVerificationMediaKey":null,"faceVerificationMediaExt":null,"nameFailReason":null,"nameVerificationStatus":2,"nameVerificationDate":1544776085000,"requestId":null,"area":null,"place":null,"zipCode":null,"remark":null,"brief":null,"appealStatus":0},"appCustomerId":null,"sourceType":3,"companyBaseDTO":{"id":null,"accountTypeName":null,"manageMode":null,"companyAbbreviation":null,"companyName":null,"legalPerson":null,"companyAddress":null,"licenseNum":null,"accountId":null,"certificateStatus":null,"companyType":null,"contactNumber":null,"accountStatus":null},"functionList":[{"id":null,"chName":"组织管理/企业/机构管理","enName":"ENT_ORG_MANAGE","level":null,"parentId":null,"requestUrl":"**/web/company*/**","requestMethod":null},{"id":null,"chName":"组织管理/经纪人管理","enName":"ENT_ORG_EMPLOYEE_MANAGE","level":null,"parentId":null,"requestUrl":"**/web/account/info/**","requestMethod":null}],"faceVerificationStatus":2,"appealStatus":0}}
+响应头, Server: nginx
+响应头, Date: Sun, 13 Jan 2019 07:12:16 GMT
+响应头, Content-Type: application/json;charset=UTF-8
+响应头, Transfer-Encoding: chunked
+响应头, Connection: keep-alive
+响应头, X-ServerInfo: gdjy-zulin-web-java-679df67dd4-zvzns(10.244.17.94)
+响应头, Cache-Control: no-cache
+响应头, Pragma: no-cache
+响应头, X-Application-Context: pahf-zulin-web-java:docker-compose:9234
+响应头, Set-Cookie: ZF_COOKIE=ff147439-fb60-4e0c-b2c0-c7c2d21bf5ec; Domain=.gdjy-zulin.st8.anhouse.com.cn; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/
+响应头, Set-Cookie: ZF_COOKIE=ff147439-fb60-4e0c-b2c0-c7c2d21bf5ec; Domain=.gdjy-zulin.st8.anhouse.com.cn; Expires=Mon, 14-Jan-2019 07:12:16 GMT; Path=/; HttpOnly
+响应头, X-Trace-Id: 08035367271611990907342858011315
+响应头, Access-Control-Allow-Origin: *
+响应头, X-Request-ID: 0803536727902527
+响应头, Set-Cookie: X-Request-ID=0803536727902527;path=/
+响应状态码： 200
+******************发布房源******************
+接口名称：上传图片
+请求Url：http://gdjy-zulin.st8.anhouse.com.cn/web/api/file/upload/picture
+请求方法：post
+请求头，cookie：ZF_COOKIE=ff147439-fb60-4e0c-b2c0-c7c2d21bf5ec; Domain=.gdjy-zulin.st8.anhouse.com.cn; Expires=Mon, 14-Jan-2019 07:12:16 GMT; Path=/; HttpOnly
+请求body：G:/DCIM/Camera/IMG_20160211_164456.jpg
+响应body：{"msg":"请求成功！","fieldErrors":[],"data":[{"fileName":"IMG_20160211_164456.jpg","fileSize":1279433,"key":"23198280-c4c3-409b-99cd-239913945b11","piture":false}],"success":true,"errorCode":"0"}
+响应状态码： 200
+
+===============================================
+Suite
+Total tests run: 4, Failures: 0, Skips: 0
+===============================================
+
+
+
+*********************TestNG命令行总结*********************
+1、在testng.xml文件中必须配置一个suite节点(测试的套件)
+2、在suite节点下配置一个test节点，如果有多个则配置多个兄弟test节点(测试的test)
+3、在一个test节点下配置一个classes节点
+4、在一个classes节点下配置一个class节点(测试的类)
+5、在一个class节点下配置一个methods节点
+6、在一个methods节点下配置一个或多个include节点(测试的方法)
+
+7、配置java classpath 环境或直接用命令行配置classpath：java -classpath
+完整命令行：
+java -classpath "%classpath%;依赖包1+依赖包2+依赖包3...;工程编译完成的.java文件bin目录" org.testng.TestNG xml文件 -usedefaultlisteners false
+
+其中参数：-usedefaultlisteners false 去除testng的默认监听
+
+8、命令行在任意目录下运行的话，会在运行的目录下生成test-output目录，目录中包含报告文件index.html
+
+
+************************上传图片接口总结****************************
+请求的request payload：boundary(----WebKitFormBoundaryRVT0JxOuKaAK3Kcl)是浏览器自己生成的
+------WebKitFormBoundaryRVT0JxOuKaAK3Kcl
+Content-Disposition: form-data; name="files"; filename="IMG_20160211_164456.jpg"
+Content-Type: image/jpeg
+
+
+------WebKitFormBoundaryRVT0JxOuKaAK3Kcl--
+
+所以在构造请求的时候，需要添加：files属性：
+			HashMap<String, ContentBody> reqParam = new HashMap<>();
+			reqParam.put("files", new FileBody(new File(strBody)));
+			MultipartEntityBuilder meb = MultipartEntityBuilder.create();
+			for (Map.Entry<String, ContentBody> temp : reqParam.entrySet()) {
+				meb.addPart(temp.getKey(), temp.getValue());
+			}
+			HttpEntity he = meb.setCharset(Charset.forName("utf-8")).build();
+			this.httpPost.setEntity(he);
+
+			
+			

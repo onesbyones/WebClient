@@ -1,8 +1,11 @@
 package com.web.clientpost;
 
+import java.io.File;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
@@ -12,6 +15,9 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.methods.HttpTrace;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.entity.mime.content.ContentBody;
+import org.apache.http.entity.mime.content.FileBody;
 
 import com.web.clients.InterfaceCreateHttp;
 
@@ -35,12 +41,25 @@ public class CreateHttpPost implements InterfaceCreateHttp {
 				this.httpPost.addHeader(tempMap.getKey(), tempMap.getValue());
 			}
 		}
-		StringEntity se = new StringEntity(strBody, "utf-8");
-		this.httpPost.setEntity(se);
+		// 处理图片、文件类上传
+		if (strBody.contains("jpg") && !strBody.isEmpty() && null != strBody) {
+			HashMap<String, ContentBody> reqParam = new HashMap<>();
+			reqParam.put("files", new FileBody(new File(strBody)));
+			MultipartEntityBuilder meb = MultipartEntityBuilder.create();
+			for (Map.Entry<String, ContentBody> temp : reqParam.entrySet()) {
+				meb.addPart(temp.getKey(), temp.getValue());
+			}
+			HttpEntity he = meb.setCharset(Charset.forName("utf-8")).build();
+			this.httpPost.setEntity(he);
+		} else {
+			StringEntity se = new StringEntity(strBody, "utf-8");
+			this.httpPost.setEntity(se);
+		}
 		// 配置请求超时时间
 		RequestConfig rc = RequestConfig.custom().setConnectTimeout(15000).setConnectionRequestTimeout(15000)
 				.setSocketTimeout(15000).build();
 		this.httpPost.setConfig(rc);
+
 	}
 
 	@Override

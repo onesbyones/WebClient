@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" parallel="false">
+  <test name="C端登录-发布房源">
+    <classes>
+      <class name="com.webclient.TestNG">
+      	  <methods>
+      		  <include name="test1"></include>
+      		  <include name="test2"></include>
+      	  </methods>
+      </class>
+    </classes>
+  </test>
+  <test name="Test">
+    <classes>
+      <class name="com.webclient.TestLogin">
+      	  <methods>
+      		  <include name="test1_TestLogin"></include>
+      		  <include name="test2_TestLogin"></include>
+      	  </methods>
+      </class>
+    </classes>
+  </test>
+	<listeners>
+	  <!-- class-name 的值填写 ExtentTestNGIReporterListener 监听类的路径 -->
+	 <listener class-name="com.web.clients.testngimpl.ExtentTestNGIReporterListener"/>
+	 <!--<listener class-name="com.testng.test.InvokedMethodListenerImpl"/>-->
+	</listeners>
+</suite>

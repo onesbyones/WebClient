@@ -37,7 +37,7 @@ public class Util {
 		}
 		LogUtils.log("请求body：" + paramBean.getBody());
 		if (null != paramBean.getResponse()) {
-			LogUtils.log("响应body：" + paramBean.getDesc());
+			LogUtils.log("响应body：" + paramBean.getResponse());
 		}
 
 	}

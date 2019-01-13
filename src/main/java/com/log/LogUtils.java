@@ -11,6 +11,6 @@ import org.testng.Reporter;
 public class LogUtils {
 
 	public static void log(String logStr) {
-		Reporter.log(logStr);
+		Reporter.log(logStr, true);
 	}
 }
