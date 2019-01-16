@@ -1,7 +1,6 @@
 package com.web.clients.common;
 
 /**
- * 通用配置类
  * 
  * @author hqh
  *

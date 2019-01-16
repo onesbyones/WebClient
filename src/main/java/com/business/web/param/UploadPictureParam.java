@@ -28,27 +28,8 @@ public class UploadPictureParam {
 	/**
 	 * 请求头部
 	 * 
-	 * @see 这种方式上传图片不需要设置请求头，否则会上传图片失败
 	 */
 	private HashMap<String, String> headersMap = new HashMap<>();
-	// {
-	// headersMap.put("Accept", "*/*");
-	// headersMap.put("Connection", "keep-alive");
-	// headersMap.put("Content-Type", "multipart/form-data; boundary=" +
-	// CommonConfig.BOUNDRY);
-	// headersMap.put("Accept-Language", "zh-CN,zh;q=0.9");
-	// headersMap.put("Accept-Encoding", "gzip, deflate");
-	// headersMap.put("User-Agent",
-	// "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
-	// like Gecko) Chrome/65.0.3325.181 Safari/537.36");
-	// }
-
-	// private String fileName = "G:\\DCIM\\Camera\\IMG_20160211_164456.jpg";
-	// private String body = "--" + CommonConfig.BOUNDRY + "\n"
-	// + "Content-Disposition: form-data; name=\"files\"; filename=\"" +
-	// fileName + "\"" + "\n"
-	// + "Content-Type: image/jpeg" + "\n" + "\n\n" + "--" +
-	// CommonConfig.BOUNDRY + "--";
 	/**
 	 * 请求body，没有则为空。比如："body": ""
 	 */

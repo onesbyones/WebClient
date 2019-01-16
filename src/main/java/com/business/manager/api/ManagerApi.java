@@ -14,7 +14,6 @@ public class ManagerApi {
 	}
 
 	public ManagerApi() {
-		// 调用登录API，初始化cookie
 
 	}
 

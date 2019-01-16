@@ -22,9 +22,9 @@ import org.apache.http.entity.mime.content.FileBody;
 import com.web.clients.InterfaceCreateHttp;
 
 /**
+ * post请求
  * 
  * @author hqh
- * @date 2018年11月24日23:25:41
  *
  */
 
@@ -41,7 +41,6 @@ public class CreateHttpPost implements InterfaceCreateHttp {
 				this.httpPost.addHeader(tempMap.getKey(), tempMap.getValue());
 			}
 		}
-		// 处理图片、文件类上传
 		if (strBody.contains("jpg") && !strBody.isEmpty() && null != strBody) {
 			HashMap<String, ContentBody> reqParam = new HashMap<>();
 			reqParam.put("files", new FileBody(new File(strBody)));
@@ -55,7 +54,6 @@ public class CreateHttpPost implements InterfaceCreateHttp {
 			StringEntity se = new StringEntity(strBody, "utf-8");
 			this.httpPost.setEntity(se);
 		}
-		// 配置请求超时时间
 		RequestConfig rc = RequestConfig.custom().setConnectTimeout(15000).setConnectionRequestTimeout(15000)
 				.setSocketTimeout(15000).build();
 		this.httpPost.setConfig(rc);

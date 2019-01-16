@@ -20,6 +20,16 @@
       </class>
     </classes>
   </test>
+  <test name="C端登录1-发布房源1">
+    <classes>
+      <class name="com.webclient.TestNGForEach">
+      	  <methods>
+      		  <include name="test1"></include>
+      		  <include name="test2"></include>
+      	  </methods>
+      </class>
+    </classes>
+  </test>
 	<listeners>
 	  <!-- class-name 的值填写 ExtentTestNGIReporterListener 监听类的路径 -->
 	 <listener class-name="com.web.clients.testngimpl.ExtentTestNGIReporterListener"/>

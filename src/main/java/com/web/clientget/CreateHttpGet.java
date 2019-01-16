@@ -14,6 +14,12 @@ import org.apache.http.client.methods.HttpTrace;
 
 import com.web.clients.InterfaceCreateHttp;
 
+/**
+ * get请求
+ * 
+ * @author hqh
+ *
+ */
 public class CreateHttpGet implements InterfaceCreateHttp {
 
 	HttpGet httpGet;
@@ -27,7 +33,6 @@ public class CreateHttpGet implements InterfaceCreateHttp {
 				this.httpGet.addHeader(tempMap.getKey(), tempMap.getValue());
 			}
 		}
-		// 配置请求超时时间
 		RequestConfig rc = RequestConfig.custom().setConnectTimeout(15000).setConnectionRequestTimeout(15000)
 				.setSocketTimeout(15000).build();
 		this.httpGet.setConfig(rc);

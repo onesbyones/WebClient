@@ -1,0 +1,22 @@
+1、在github项目中添加.gitignore文件，创建的时候会提示你创建哪种类型的.gitignore文件
+2、在文件中添加：
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.settings
+.classpath
+.project
+
+
+# Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
+!/.mvn/wrapper/maven-wrapper.jar
+
+
+3、然后把这个文件pull到本地
+4、如果工程中有新的文件增加，需要忽略的文件则在ignore中增加，提交时就会忽略这些文件

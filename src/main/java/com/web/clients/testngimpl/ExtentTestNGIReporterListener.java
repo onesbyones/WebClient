@@ -37,14 +37,11 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
  */
 public class ExtentTestNGIReporterListener implements IReporter {
 
-	// 生成的路径以及文件名
 	private static final String OUTPUT_FOLDER = "test-output/";
 	private static final String FILE_NAME = "index.html";
 
-	// 实例化一个ExtentReports
 	private ExtentReports extentReports;
 
-	// 测试类、节点对应关系
 	private HashMap<String, ExtentTest> parentTestMap = new HashMap<>(512);
 
 	@Override
@@ -56,19 +53,15 @@ public class ExtentTestNGIReporterListener implements IReporter {
 		}
 		// 遍历测试集：suites
 		for (ISuite suite : suites) {
-			// 获取每一个suite里的测试结果
 			Map<String, ISuiteResult> result = suite.getResults();
 
-			// 如果suite里面没有任何用例，直接跳过，不在报告里生成
 			if (result.size() == 0) {
 				continue;
 			}
-			// 统计suite下的成功、失败、跳过的总用例数
 			int suiteFailSize = 0;
 			int suitePassSize = 0;
 			int suiteSkipSize = 0;
 
-			// 存在多个suite的情况下，在报告中将同一个suite的测试结果归为一类，创建一级节点。
 			ExtentTest suiteTest = null;
 			if (createSuiteNode) {
 				suiteTest = this.extentReports.createTest(suite.getName()).assignCategory(suite.getName());
@@ -79,10 +72,8 @@ public class ExtentTestNGIReporterListener implements IReporter {
 			}
 			for (ISuiteResult r : result.values()) {
 				ExtentTest resultNode;
-				// 测试结果上下文(TestRunner)
 				ITestContext context = r.getTestContext();
 				if (createSuiteResultNode) {
-					// 没有创建suite的情况下，将在SuiteResult的创建为一级节点，否则创建为suite的一个子节点。
 					if (null == suiteTest) {
 						resultNode = this.extentReports.createTest(r.getTestContext().getName());
 					} else {
@@ -96,9 +87,6 @@ public class ExtentTestNGIReporterListener implements IReporter {
 					String suiteName = suite.getName();
 					String contextName = r.getTestContext().getName();
 
-					// 设置左侧栏节点名称--》父节点
-					// resultNode.getModel().setName(suiteName + " : " +
-					// contextName);
 					resultNode.getModel().setName(contextName);
 					if (resultNode.getModel().hasCategory()) {
 						resultNode.assignCategory(contextName);
@@ -113,7 +101,6 @@ public class ExtentTestNGIReporterListener implements IReporter {
 					resultNode.getModel().setStartTime(startDate);
 					resultNode.getModel().setEndTime(endDate);
 
-					// 统计SuiteResult下的数据
 					int passSize = r.getTestContext().getPassedTests().size();
 					int failSize = r.getTestContext().getFailedTests().size();
 					int skipSize = r.getTestContext().getSkippedTests().size();
@@ -174,7 +161,6 @@ public class ExtentTestNGIReporterListener implements IReporter {
 	 * @param status
 	 */
 	private void buildTestNodes(ExtentTest extenttest, IResultMap tests, Status status) {
-		// 存在父节点时，获取父节点的标签
 		String[] categories = new String[0];
 		if (extenttest != null) {
 			List<TestAttribute> categoryList = extenttest.getModel().getCategoryContext().getAll();
@@ -187,12 +173,10 @@ public class ExtentTestNGIReporterListener implements IReporter {
 
 		ExtentTest test = null;
 		if (tests.size() > 0) {
-			// 调整用例排序，按时间排序
 			Set<ITestResult> treeSet = new TreeSet<ITestResult>();
 			treeSet.addAll(tests.getAllResults());
 			for (ITestResult result : treeSet) {
 				Object[] parameters = result.getParameters();
-				// 定义节点名称
 				String name = "";
 				String className = "";
 				for (Object param : parameters) {
@@ -202,7 +186,6 @@ public class ExtentTestNGIReporterListener implements IReporter {
 					if (name.length() > 50) {
 						name = name.substring(0, 49) + "...";
 					}
-					// 修改成：使用方法名+参数名称作为标签名
 					name = result.getMethod().getMethodName().toString() + name;
 					className = result.getMethod().getTestClass().getName();
 				} else {
@@ -211,24 +194,18 @@ public class ExtentTestNGIReporterListener implements IReporter {
 				}
 				if (extenttest == null) {
 					if (!this.parentTestMap.containsKey(className)) {
-						// 创建父节点
 						test = this.extentReports.createTest(className);
 						this.parentTestMap.put(className, test);
-						// 创建子节点
 						test = test.createNode(name);
 					} else {
-						// 创建子节点
 						test = this.parentTestMap.get(className).createNode(name);
 					}
 				} else {
 					if (!this.parentTestMap.containsKey(className)) {
-						// 在父节点下创建子节点
 						test = extenttest.createNode(className);
-						// test.assignCategory(className);
 						this.parentTestMap.put(className, test);
 						test = test.createNode(name);
 					} else {
-						// 创建子节点
 						test = this.parentTestMap.get(className).createNode(name);
 					}
 
@@ -236,10 +213,8 @@ public class ExtentTestNGIReporterListener implements IReporter {
 				for (String group : result.getMethod().getGroups())
 					test.assignCategory(group);
 
-				// 在子节点下，把需要的日志、截图等信息添加到子节点中
 				List<String> outputList = Reporter.getOutput(result);
 				for (String output : outputList) {
-					// 将用例的log输出报告中
 					test.debug(output);
 				}
 				if (result.getThrowable() != null) {

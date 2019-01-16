@@ -14,6 +14,12 @@ import org.apache.http.client.methods.HttpTrace;
 
 import com.web.clients.InterfaceCreateHttp;
 
+/**
+ * put请求
+ * 
+ * @author hqh
+ *
+ */
 public class CreateHttpPut implements InterfaceCreateHttp {
 
 	HttpPut httpPut;
@@ -27,7 +33,6 @@ public class CreateHttpPut implements InterfaceCreateHttp {
 				this.httpPut.addHeader(tempMap.getKey(), tempMap.getValue());
 			}
 		}
-		// 配置请求超时时间
 		RequestConfig rc = RequestConfig.custom().setConnectTimeout(15000).setConnectionRequestTimeout(15000)
 				.setSocketTimeout(15000).build();
 		this.httpPut.setConfig(rc);

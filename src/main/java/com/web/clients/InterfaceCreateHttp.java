@@ -11,7 +11,6 @@ import org.apache.http.client.methods.HttpTrace;
 /**
  * 
  * @author hqh
- * @date 2018年11月24日23:25:41
  *
  */
 
